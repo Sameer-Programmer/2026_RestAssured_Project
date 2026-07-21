@@ -1,0 +1,25 @@
+
+Restassured
+===============
+Restassured is a Lib , to test RestAPI's
+=================
+Maven dependency
+1) restassured -> given(),when(),then()
+2) testNg --> Assertions
+3) jsonPath --> To extract the Json Values
+4) org.json -> To Create the json Object -For Post request
+=================================
+static imports
+import.io.restassured.Restassured -> given(), when(),then()
+import.io.restassured.response.Response -> Response rs
+import.static org.hamcrest.Mathers---> for Validation of then().stauscode(200).header("content-Type","application/json").body("[1].email",equalto("test@gmail.com"))
+=====================
+TestNg Assertions
+Assert.assertEquals(rs.getStatusCode(), 200); //TestNg Assertions
+        Assert.assertEquals(rs.header("Content-Type"), "application/json; charset=utf-8");
+        String bookName = rs.jsonPath().get("[1].name").toString();
+        Assert.assertEquals(bookName, "Deenabandhu Bharadwaj");
+==================================
+To Validate the Email From the response in any Order we will go with
+List<String>ls = rs.jsonPath().get("key");
+Assert.assertTrue(ls.contains("value"))

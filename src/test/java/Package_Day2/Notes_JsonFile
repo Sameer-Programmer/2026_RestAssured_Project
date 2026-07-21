@@ -1,0 +1,291 @@
+===============================
+FILES, PATHS, FILEINPUTSTREAM &
+JSONPATH NOTES
+===============================
+
+1. WHAT IS FileInputStream?
+
+FileInputStream is a Java class used to read data from a file as bytes.
+
+Example:
+
+FileInputStream fis =
+        new FileInputStream("./JsonFiles/File1.json");
+
+Rest Assured:
+
+given()
+        .body(fis)
+.when()
+        .post(url);
+
+Advantage:
+- Simple
+- Directly sends JSON file
+
+Disadvantage:
+- Cannot easily modify JSON data before sending
+
+
+==================================================
+
+2. WHAT IS Files.readString()?
+
+Files.readString() is a Java 11 method.
+
+Purpose:
+- Reads the complete file content
+- Returns it as a String
+
+Example:
+
+String json =
+        Files.readString(
+                Paths.get("./JsonFiles/File1.json"));
+
+Suppose File1.json contains:
+
+{
+   "name":"${name}",
+   "email":"${email}"
+}
+
+After execution:
+
+json contains:
+
+{
+   "name":"${name}",
+   "email":"${email}"
+}
+
+Now json is a normal Java String.
+
+
+==================================================
+
+3. WHAT IS Paths.get()?
+
+Paths.get() converts a file location into a Path object.
+
+Example:
+
+Path path =
+        Paths.get("./JsonFiles/File1.json");
+
+Here:
+
+"."  = Current Project Directory
+
+"./JsonFiles/File1.json"
+
+means:
+
+CurrentProject
+    |
+    |-- JsonFiles
+            |
+            |-- File1.json
+
+Files.readString() requires a Path object.
+
+Correct:
+
+Files.readString(
+        Paths.get("./JsonFiles/File1.json"));
+
+Wrong:
+
+Files.readString("./JsonFiles/File1.json");
+
+
+==================================================
+
+4. WHY USE Files.readString()?
+
+Because String can be modified.
+
+Example:
+
+String json =
+        Files.readString(
+                Paths.get("./JsonFiles/File1.json"));
+
+json =
+        json.replace("${name}",
+                     "Sameer");
+
+json =
+        json.replace("${email}",
+                     "sameer@gmail.com");
+
+Now request body becomes:
+
+{
+   "name":"Sameer",
+   "email":"sameer@gmail.com"
+}
+
+This is not possible directly with FileInputStream.
+
+
+==================================================
+
+5. DYNAMIC DATA USING FAKER
+
+JSON FILE
+
+{
+   "name":"${name}",
+   "email":"${email}"
+}
+
+Java Code
+
+String json =
+        Files.readString(
+                Paths.get("./JsonFiles/File1.json"));
+
+json =
+        json.replace("${name}",
+                     DataGenerator.getName());
+
+json =
+        json.replace("${email}",
+                     DataGenerator.getEmail());
+
+Now every execution sends unique data.
+
+
+==================================================
+
+6. WHAT IS JsonPath?
+
+JsonPath is a Rest Assured class.
+
+Used to extract data from JSON Response.
+
+Example Response
+
+{
+   "id":123,
+   "name":"Sameer",
+   "email":"sameer@gmail.com"
+}
+
+Code
+
+JsonPath jp =
+        response.jsonPath();
+
+int id =
+        jp.getInt("id");
+
+String name =
+        jp.getString("name");
+
+String email =
+        jp.getString("email");
+
+
+==================================================
+
+7. COMMON REST ASSURED CLASSES
+
+Response
+
+Response response =
+        given()
+        .when()
+        .get(url);
+
+
+JsonPath
+
+JsonPath jp =
+        response.jsonPath();
+
+
+FileInputStream
+
+FileInputStream fis =
+        new FileInputStream(path);
+
+
+FileReader
+
+FileReader fr =
+        new FileReader(path);
+
+
+JSONObject
+
+JSONObject obj =
+        new JSONObject();
+
+
+HashMap
+
+HashMap<String,Object> data =
+        new HashMap<>();
+
+
+==================================================
+
+8. COMMON INTERVIEW QUESTION
+
+Q: Why use Files.readString() instead of FileInputStream?
+
+Answer:
+
+FileInputStream reads the file as bytes and is useful when the JSON file should be sent as-is.
+
+Files.readString() reads the entire file into a String, allowing us to modify placeholders such as ${name} and ${email} before sending the request.
+
+
+==================================================
+
+9. FRAMEWORK STRUCTURE
+
+src
+|
+|-- test
+     |
+     |-- java
+     |     |
+     |     |-- Tests
+     |     |-- Utils
+     |            |
+     |            |-- DataGenerator.java
+     |            |-- JsonUtility.java
+     |
+     |-- resources
+            |
+            |-- JsonFiles
+                    |
+                    |-- File1.json
+
+
+==================================================
+
+10. COMPLETE FLOW
+
+Read JSON File
+        ↓
+Files.readString()
+        ↓
+Get JSON as String
+        ↓
+Replace Placeholders
+        ↓
+Generate Dynamic Data using Faker
+        ↓
+Pass JSON in body()
+        ↓
+Send Request
+        ↓
+Get Response
+        ↓
+Use JsonPath to extract data
+
+==================================================

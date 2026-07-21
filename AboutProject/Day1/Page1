@@ -1,0 +1,29 @@
+
+Pre-requisites:
+=======================================
+1) Java 9+ & Eclipse
+2) TestNG
+3) Maven (comes with Eclipse)
+
+Dependencies we required for the RestAssured
+==================================================
+rest-assured
+testng
+json-path
+json
+gson
+scribejava-apis
+json-schema-validator
+xml-schema-validator
+
+Rest Assured Static Packages
+================================
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+
+====================================
+Response response = given().when().get(url);
+JsonPath jp = response.jsonPath();
+String name = jp.getString("name");
