@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.annotations.Test;
 
-public class Basics_Serialization_AND_Deserilization {
+public class Basics14_Serialization_AND_Deserilization {
 
 
     @Test
@@ -17,12 +17,12 @@ public class Basics_Serialization_AND_Deserilization {
 
         // convert Java Object to JsonObject => Serialization
 
-
         // Serialization
         // Convert Java Object → JSON
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonData = objectMapper.writeValueAsString(data);
+
         System.out.println(jsonData);
         DemoPojoPostRequest javaObject =  objectMapper.readValue(jsonData, DemoPojoPostRequest.class);
         System.out.println("Name: " + javaObject.getName());
