@@ -10,8 +10,8 @@ public class Basics14_Serialization_AND_Deserilization {
     @Test
     public void  m1() throws JsonProcessingException {
         DemoPojoPostRequest data = new DemoPojoPostRequest(); // pojo Class Obj
-        data.setName("Scott901q");
-        data.setEmail("Test1q231@yopmail.com");
+        data.setName("Scott901qq");
+        data.setEmail("Test1q23q1@yopmail.com");
         data.setGender("male");
         data.setStatus("Active");
 
