@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class Basics4 {
+public class Basics4_QueryAndPathParameters {
 
     //https://gorest.co.in/public/v2/users?id=8549923
     String url = "https://gorest.co.in/public/v2/users?";

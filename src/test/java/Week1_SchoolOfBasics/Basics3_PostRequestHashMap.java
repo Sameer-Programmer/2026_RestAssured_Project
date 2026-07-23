@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-public class Basics3 {
+public class Basics3_PostRequestHashMap {
 
     String personFirstname;
     String personEmail;
