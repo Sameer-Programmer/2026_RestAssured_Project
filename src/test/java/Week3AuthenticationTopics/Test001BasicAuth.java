@@ -1,15 +1,11 @@
 package Week3AuthenticationTopics;
 
-import io.restassured.specification.Argument;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
-public class TestBasicAuth {
+public class Test001BasicAuth {
 
     @Test
     public void m1BasicAuth() {

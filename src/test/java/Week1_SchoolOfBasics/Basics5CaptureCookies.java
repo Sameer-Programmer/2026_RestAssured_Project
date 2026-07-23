@@ -1,4 +1,4 @@
-package SchoolOfBasics;
+package Week1_SchoolOfBasics;
 
 import io.restassured.response.Response;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package DemoSerialization;
+package Week2DemoSerialization;
 
 public class DemoPojoPostRequest {
     String name;

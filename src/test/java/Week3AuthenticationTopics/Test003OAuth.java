@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class Test3OAuth {
+public class Test003OAuth {
     @Test
     public void  m1(){
         given()

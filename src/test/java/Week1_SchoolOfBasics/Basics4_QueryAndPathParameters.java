@@ -1,4 +1,4 @@
-package SchoolOfBasics;
+package Week1_SchoolOfBasics;
 
 import org.testng.annotations.Test;
 

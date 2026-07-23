@@ -7,7 +7,7 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TestBearerToken {
+public class Test002BearerToken {
 
 
     @Test

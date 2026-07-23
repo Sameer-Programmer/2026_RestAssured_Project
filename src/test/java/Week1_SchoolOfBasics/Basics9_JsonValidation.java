@@ -1,10 +1,8 @@
-package SchoolOfBasics;
+package Week1_SchoolOfBasics;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 /*
