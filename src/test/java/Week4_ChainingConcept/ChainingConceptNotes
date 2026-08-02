@@ -1,0 +1,145 @@
+=========================================
+        TestNG - ITestContext Notes
+=========================================
+
+📌 What is ITestContext?
+------------------------
+ITestContext is a TestNG interface used to share data between test methods
+during execution.
+
+It acts like a storage object where you can save values in one test method
+and retrieve them in another test method.
+
+Syntax:
+-------
+public void testMethod(ITestContext context)
+
+=========================================================
+1. Single <test> Tag Level (Test Level Sharing)
+=========================================================
+
+✅ Used when data needs to be shared only within the same <test> tag
+of testng.xml.
+
+Store Value:
+------------
+context.setAttribute("user_id", userId);
+
+Retrieve Value:
+---------------
+int userId = (Integer) context.getAttribute("user_id");
+
+Example:
+--------
+@Test
+public void createUser(ITestContext context) {
+
+    int userId = 101;
+
+    // Store the user id
+    context.setAttribute("user_id", userId);
+}
+
+@Test(dependsOnMethods = "createUser")
+public void getUser(ITestContext context) {
+
+    // Retrieve the stored user id
+    int userId = (Integer) context.getAttribute("user_id");
+
+    System.out.println(userId);
+}
+
+✔ Scope:
+--------
+Only available inside the SAME <test> tag.
+
+=========================================================
+2. Suite Level (Multiple <test> Tags)
+=========================================================
+
+✅ Used when data needs to be shared across multiple <test> tags
+within the same suite.
+
+Store Value:
+------------
+context.getSuite().setAttribute("user_id", userId);
+
+Retrieve Value:
+---------------
+int userId = (Integer) context.getSuite().getAttribute("user_id");
+
+Example:
+--------
+@Test
+public void createUser(ITestContext context) {
+
+    int userId = 101;
+
+    // Store at Suite Level
+    context.getSuite().setAttribute("user_id", userId);
+}
+
+@Test
+public void getUser(ITestContext context) {
+
+    // Retrieve from Suite Level
+    int userId = (Integer) context.getSuite().getAttribute("user_id");
+
+    System.out.println(userId);
+}
+
+✔ Scope:
+--------
+Available to ALL <test> tags inside the SAME suite.
+
+=========================================================
+Difference
+=========================================================
+
++----------------------+----------------------+----------------------------+
+| Feature              | Test Level           | Suite Level                |
++----------------------+----------------------+----------------------------+
+| Store Method         | setAttribute()       | getSuite().setAttribute()  |
+| Retrieve Method      | getAttribute()       | getSuite().getAttribute()  |
+| Scope                | Single <test> tag    | Entire <suite>             |
+| Shared Between       | Same Test Methods    | Multiple <test> tags       |
++----------------------+----------------------+----------------------------+
+
+=========================================================
+Important Notes
+=========================================================
+
+✅ Test Level
+-------------
+context.setAttribute("user_id", userId);
+
+int userId =
+(Integer) context.getAttribute("user_id");
+
+Used only inside ONE <test> tag.
+
+---------------------------------------------------------
+
+✅ Suite Level
+--------------
+context.getSuite().setAttribute("user_id", userId);
+
+int userId =
+(Integer) context.getSuite().getAttribute("user_id");
+
+Used across MULTIPLE <test> tags.
+
+---------------------------------------------------------
+
+⭐ Interview Note:
+-----------------
+Suite Level configuration works for a single <test> tag as well,
+because every <test> belongs to a suite.
+
+However, Test Level data CANNOT be accessed from another <test> tag.
+
+Memory Tip:
+-----------
+Single <test>  → context.setAttribute()
+
+Entire Suite   → context.getSuite().setAttribute()

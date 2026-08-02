@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="DemoSuite">
+    <test name="MyTest">
+        <classes>
+            <class name="Week4_ChainingConcept.CreateUser"></class>
+            <class name="Week4_ChainingConcept.getUser"></class>
+            <class name="Week4_ChainingConcept.Updateuser"></class>
+            <class name="Week4_ChainingConcept.DeleteUser"></class>
+        </classes>
+    </test>
+</suite>

@@ -2,7 +2,7 @@ package Utils;
 
 import com.github.javafaker.Faker;
 
-public class DataGenerator {
+public class FakerClass {
     static Faker faker = new Faker();
 
     public static String getName(){
