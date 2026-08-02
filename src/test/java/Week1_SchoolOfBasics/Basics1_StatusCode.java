@@ -15,13 +15,12 @@ then()
  */
 
 
-public class Basics1 {
+public class Basics1_StatusCode {
 
     @Test
     public void Test1(){
         Response rs =  given().
                 when().get("https://gorest.co.in/public/v2/users");
-
         int statuscode = rs.statusCode();
         Assert.assertEquals(statuscode,200);
 

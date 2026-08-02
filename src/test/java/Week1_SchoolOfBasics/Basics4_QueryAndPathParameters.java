@@ -16,7 +16,7 @@ public class Basics4_QueryAndPathParameters {
 
         given().pathParam("mypath","users")
                 .queryParam("id",8549923).
-                when().get("https://gorest.co.in/public/v2/{mypath}")
+                 when().get("https://gorest.co.in/public/v2/{mypath}")
                 .then().log().all()
         .statusCode(200);
     }

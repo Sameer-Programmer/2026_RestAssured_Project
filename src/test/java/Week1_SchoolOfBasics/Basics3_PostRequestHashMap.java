@@ -19,11 +19,11 @@ public class Basics3_PostRequestHashMap {
     public void m1(){
        personFirstname = DG1.getFirstName();
        personEmail = DG1.getEmail();
-       HashMap hm = new HashMap();
-       hm.put("name",DG1.getFirstName());
+       HashMap<String,String> hm = new HashMap();
+       hm.put("name",personFirstname);
        hm.put("gender","male");
        hm.put("status","active");
-       hm.put("email",DG1.getEmail());
+       hm.put("email",personEmail);
         given().
                 header("Authorization","Bearer "+token)
                 .contentType("application/json")

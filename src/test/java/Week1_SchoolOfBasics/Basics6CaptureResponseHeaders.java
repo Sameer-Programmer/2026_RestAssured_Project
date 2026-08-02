@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class Basics6Headers {
+public class Basics6CaptureResponseHeaders {
 
 
     @Test

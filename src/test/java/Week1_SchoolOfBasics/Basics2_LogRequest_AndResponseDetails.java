@@ -3,7 +3,7 @@ package Week1_SchoolOfBasics;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
-public class Basics2 {
+public class Basics2_LogRequest_AndResponseDetails {
 
     /*
 This prints the complete response, including:
