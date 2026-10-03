@@ -16,6 +16,6 @@ public class Basics7_MatchersValidation {
                 .then().log().all().
                 statusCode(200)
                 .header("Content-Type", "application/json; charset=utf-8")
-                 .body("[1].email", equalTo("deenabandhu_bharadwaj@toy.example"));
+                .body("[1].email", equalTo("deenabandhu_bharadwaj@toy.example"));
     }
 }

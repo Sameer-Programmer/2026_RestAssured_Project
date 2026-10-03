@@ -20,13 +20,15 @@ public class getUser {
         String token ="84ff627b3a5c7fdfb16f12f61b18cd67401de3cc6b7201ab977ba88883fa7675";
 
 
-        Response rs =given().header("Authorization","Bearer "+token)
+        Response rs =given()
+                .header("Authorization","Bearer "+token)
                 .pathParam("userid",userid)
-                .when().get(url);
+                .when()
+                .get(url);
        int responseCode = rs.statusCode();
+
        Assert.assertEquals(200,responseCode);
         System.out.println(rs.asPrettyString());
-
         System.out.println("class getUser User Execueed successfully ");
 
        }

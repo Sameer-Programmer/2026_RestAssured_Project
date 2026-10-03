@@ -9,6 +9,7 @@ public class Basics14_Serialization_AND_Deserilization {
 
     @Test
     public void  m1() throws JsonProcessingException {
+        // Object Creation of Class DemoPojoPostRequest
         DemoPojoPostRequest data = new DemoPojoPostRequest(); // pojo Class Obj
         data.setName("Scott901qq");
         data.setEmail("Test1q23q1@yopmail.com");
@@ -22,9 +23,13 @@ public class Basics14_Serialization_AND_Deserilization {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonData = objectMapper.writeValueAsString(data);
-
         System.out.println(jsonData);
-        DemoPojoPostRequest javaObject =  objectMapper.readValue(jsonData, DemoPojoPostRequest.class);
+        //===========================================================================Above part is serilization==
+
+
+        DemoPojoPostRequest javaObject =
+                objectMapper.readValue(jsonData, DemoPojoPostRequest.class);
+        //➡️ Deserialization
         System.out.println("Name: " + javaObject.getName());
         System.out.println("Email: " + javaObject.getEmail());
         System.out.println("Status: " + javaObject.getStatus());
@@ -32,3 +37,13 @@ public class Basics14_Serialization_AND_Deserilization {
 
     }
 }
+
+/*
+So in your exact code:
+objectMapper.writeValueAsString(data);
+
+➡️ Serialization
+objectMapper.readValue(jsonData, DemoPojoPostRequest.class);
+
+➡️ Deserialization
+ */

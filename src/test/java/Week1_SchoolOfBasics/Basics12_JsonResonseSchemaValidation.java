@@ -15,3 +15,9 @@ public class Basics12_JsonResonseSchemaValidation {
                .body(matchesJsonSchemaInClasspath("jsonSchemaFile.json"));
     }
 }
+
+/*
+Note
+src/test/resources is part of the test classpath,
+so matchesJsonSchemaInClasspath() can locate the schema using only its classpath-relative filename.
+ */

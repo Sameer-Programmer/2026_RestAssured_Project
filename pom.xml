@@ -11,8 +11,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>26</maven.compiler.source>
-        <maven.compiler.target>26</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -54,7 +54,16 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- ScribeJava APIs -->
+        <!-- ScribeJava APIs  this is for
+        ScribeJava is used for OAuth authentication—especially when an API requires:
+        OAuth 1.0
+        OAuth 2.0
+         Access tokens
+         Consumer key and consumer secret
+         Token signing
+
+
+        -->
         <dependency>
             <groupId>com.github.scribejava</groupId>
             <artifactId>scribejava-apis</artifactId>

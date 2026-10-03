@@ -1,0 +1,63 @@
+Gson Dependency — Purpose
+XML
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.13.1</version>
+</dependency>
+
+
+Gson is Google’s Java library for converting between:
+Java object → JSON: Serialization
+JSON → Java object: Deserialization
+Example: Java Object to JSON
+Java
+Gson gson = new Gson();
+
+User user = new User("John", "Tester");
+
+String json = gson.toJson(user);
+
+System.out.println(json);
+Output:
+JSON
+{
+  "name": "John",
+  "job": "Tester"
+}
+Example: JSON to Java Object
+Java
+String json = "{\"name\":\"John\",\"job\":\"Tester\"}";
+
+User user = gson.fromJson(json, User.class);
+
+System.out.println(user.getName());
+Using Gson with Rest Assured
+Java
+Gson gson = new Gson();
+
+User user = new User("John", "Tester");
+
+given()
+    .contentType("application/json")
+    .body(gson.toJson(user))
+.when()
+    .post("/users")
+.then()
+    .statusCode(201);
+Difference from the Other Dependencies
+Dependency
+Main purpose
+json-path
+Find/extract values from JSON response
+org.json
+Manually create and modify JSON
+gson
+Convert Java objects and JSON
+Easy Memory Trick
+Gson = Java Object ↔ JSON Converter
+In real Rest Assured projects, Gson is especially useful when your project uses POJO classes for request and response bodies.
+Task completed
+1:09 AM
+How was this result?
+Task comple

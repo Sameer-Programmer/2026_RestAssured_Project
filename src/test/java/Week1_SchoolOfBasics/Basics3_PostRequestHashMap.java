@@ -29,6 +29,9 @@ public class Basics3_PostRequestHashMap {
                 .contentType("application/json")
                 .body(hm)
                 .when().post(url)
-                .then().statusCode(201);
+                .then().statusCode(201)
+
+
+       ;
     }
 }
