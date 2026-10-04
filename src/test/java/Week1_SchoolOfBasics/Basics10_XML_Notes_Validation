@@ -1,0 +1,69 @@
+STEP 1 — PARSE XML
+==================
+
+XmlPath xp = new XmlPath(rs.asString());
+
+XmlPath parses the XML response so that we can read
+and extract data from its structure.
+
+Note:
+asString() / asPrettyString() → Response Body as String
+asPrettyString() → mainly for readable display
+asString() → commonly used for parsing
+
+
+STEP 2 — CHECK DATA IS PRESENT
+==============================
+
+String container = xp.getList("breakfast_menu").toString();
+
+Assert.assertTrue(container.contains("Strawberry"));
+
+Flow:
+
+XML → XmlPath → getList() → List → toString() → String → contains()
+
+
+STEP 3 — VALIDATE PARTICULAR VALUE
+===================================
+
+Example:
+
+French Toast → $4.50
+
+Step A: Get Names and Prices
+
+List<String> names =
+        xp.getList("breakfast_menu.food.name");
+
+List<String> prices =
+        xp.getList("breakfast_menu.food.price");
+
+
+Step B: Find French Toast position
+
+int indexOfFrench = names.indexOf("French Toast");
+
+
+Step C: Get price using the same position
+
+String priceOfFrench = prices.get(indexOfFrench);
+
+
+Step D: Assert
+
+Assert.assertEquals(priceOfFrench, "$4.50");
+
+
+IMPORTANT CONCEPT:
+
+names.indexOf("French Toast")
+        ↓
+       3
+
+prices.get(3)
+        ↓
+     "$4.50"
+
+So we use the position/index from the NAME list
+to find the corresponding value from the PRICE list.
